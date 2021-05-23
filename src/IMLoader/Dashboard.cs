@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using NAudio.Wave;
 
 namespace IMLoader
 {
@@ -40,6 +41,8 @@ namespace IMLoader
             toolTip_tips.SetToolTip(label_nextSong, label_nextSong.Tag.ToString());
             toolTip_tips.SetToolTip(label_emptySongList, label_emptySongList.Tag.ToString());
             toolTip_tips.SetToolTip(label_emptyFinishedList, label_emptyFinishedList.Tag.ToString());
+            toolTip_tips.SetToolTip(label_addSingleSong, label_addSingleSong.Tag.ToString());
+            toolTip_tips.SetToolTip(label_addFromWeb, label_addFromWeb.Tag.ToString());
         }
 
         private void Dashboard_Load(object sender, EventArgs e)
@@ -49,9 +52,11 @@ namespace IMLoader
             this.Width = Controller.SystemConfigurationLoader.systemSettings.live.width;
             this.Height = Controller.SystemConfigurationLoader.systemSettings.live.height;
             this.trackBar_volume.Value = Controller.SystemConfigurationLoader.systemSettings.card.volume;
+            Controller.MusicController.SetVolume(this.trackBar_volume.Value);
             loop = Controller.SystemConfigurationLoader.systemSettings.card.loop;
             label_loop.BackColor = loop ? Color.DarkBlue : Color.Black;
             Controller.MusicController.songList.AddRange(Controller.SystemConfigurationLoader.systemSettings.live.default_songlist);
+            label_title.Text = "点歌列表 - " + Controller.SystemConfigurationLoader.systemSettings.live.room_id;
         }
 
         private void Dashboard_MouseDown(object sender, MouseEventArgs e)
@@ -70,6 +75,24 @@ namespace IMLoader
 
         #region Effects
 
+        private void label_addFromWeb_MouseEnter(object sender, EventArgs e)
+        {
+            label_addFromWeb.BackColor = Color.DarkGray;
+        }
+
+        private void label_addFromWeb_MouseLeave(object sender, EventArgs e)
+        {
+            label_addFromWeb.BackColor = Color.Black;
+        }
+        private void label_addSingleSong_MouseEnter(object sender, EventArgs e)
+        {
+            label_addSingleSong.BackColor = Color.DarkGray;
+        }
+
+        private void label_addSingleSong_MouseLeave(object sender, EventArgs e)
+        {
+            label_addSingleSong.BackColor = Color.Black;
+        }
         private void label_emptySongList_MouseEnter(object sender, EventArgs e)
         {
             label_emptySongList.BackColor = Color.DarkRed;
@@ -234,6 +257,15 @@ namespace IMLoader
         #region Tool Strip Buttons
         private void button_exit_Click(object sender, EventArgs e)
         {
+            if(!(Controller.MusicController.media is null))
+            {
+                if (Controller.MusicController.waveOut.PlaybackState != PlaybackState.Stopped)
+                {
+                    Controller.MusicController.waveOut.Stop();
+                    Controller.MusicController.waveOut.Dispose();
+                    Controller.MusicController.media.Dispose();
+                }
+            }
             Controller.SystemConfigurationLoader.systemSettings.card.loop = loop;
             Controller.SystemConfigurationLoader.systemSettings.showCard = songCardShowed;
             Controller.SystemConfigurationLoader.systemSettings.showLyric = lyricShowed;
@@ -319,10 +351,8 @@ namespace IMLoader
 
         private void label_emptySongList_Click(object sender, EventArgs e)
         {
-            Thread thread_c = new Thread(new ThreadStart(Controller.MusicController.songList.Clear));
-            thread_c.Start();
-            Thread thread_e = new Thread(new ThreadStart(Controller.MusicController.EndSong));
-            thread_e.Start();
+            Controller.MusicController.songList.Clear();
+            Controller.MusicController.EndSong();
         }
 
         private void label_emptyFinishedList_Click(object sender, EventArgs e)
@@ -345,6 +375,21 @@ namespace IMLoader
                 lyricFrm.Show();
             }
         }
+
+       
+
+        private void label_addFromWeb_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label_addSingleSong_Click(object sender, EventArgs e)
+        {
+            AddSong addSingleSongFrm = new AddSong();
+            addSingleSongFrm.Show();
+        }
+
+
 
         #endregion
 
@@ -371,6 +416,7 @@ namespace IMLoader
 
         private void timer_refreshData_Tick(object sender, EventArgs e)
         {
+            label_title.Text = "点歌列表 - " + Controller.SystemConfigurationLoader.systemSettings.live.room_id;
             Controller.DamOperationController.RefreshData();
         }
 
@@ -378,8 +424,7 @@ namespace IMLoader
         {
             if (!firstRun) 
             {
-                Thread thread = new Thread(new ThreadStart(Controller.MusicController.StartSong));
-                thread.Start(); 
+                Controller.MusicController.StartSong(); 
             }
         }
         #endregion

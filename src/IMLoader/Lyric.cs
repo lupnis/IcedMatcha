@@ -16,6 +16,7 @@ namespace IMLoader
         public Lyric()
         {
             InitializeComponent();
+
         }
 
         private void Lyric_FormClosing(object sender, FormClosingEventArgs e)
@@ -39,8 +40,8 @@ namespace IMLoader
 
         private void button_exit_Click(object sender, EventArgs e)
         {
-            this.Close();
-              
+            timer_refreshLyric.Stop();
+            this.Close(); 
         }
 
         private void Lyric_Load(object sender, EventArgs e)
@@ -49,6 +50,8 @@ namespace IMLoader
                 Controller.SystemConfigurationLoader.systemSettings.lyric.lyric_pos.Value);
             this.Width = Controller.SystemConfigurationLoader.systemSettings.lyric.width;
             this.Height = Controller.SystemConfigurationLoader.systemSettings.lyric.height;
+            label_curr.Height = label_come.Height = (this.Height-12) / 2;
+            timer_refreshLyric.Start();
         }
 
         private void button_settings_Click(object sender, EventArgs e)
@@ -58,6 +61,20 @@ namespace IMLoader
             this.Size = new Size(customize.p_width, customize.p_height);
             Controller.SystemConfigurationLoader.systemSettings.lyric.width = this.Width;
             Controller.SystemConfigurationLoader.systemSettings.lyric.height = this.Height;
+            label_curr.Height = label_come.Height = (this.Height - 12) / 2;
+        }
+
+        private void button_add_Click(object sender, EventArgs e)
+        {
+            Controller.LyricController.LoadLyric();
+        }
+
+        private void timer_refreshLyric_Tick(object sender, EventArgs e)
+        {
+            Controller.LyricController.LoadLyric();
+            KeyValuePair<string,string> cur=Controller.LyricController.GetCurrentLyric();
+            label_curr.Text = cur.Key;
+            label_come.Text = cur.Value;
         }
     }
 }

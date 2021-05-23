@@ -31,7 +31,7 @@ namespace IMLoader
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Dashboard));
-            this.label1 = new System.Windows.Forms.Label();
+            this.label_title = new System.Windows.Forms.Label();
             this.button_exit = new System.Windows.Forms.Label();
             this.button_settings = new System.Windows.Forms.Label();
             this.button_showLyric = new System.Windows.Forms.Label();
@@ -39,6 +39,8 @@ namespace IMLoader
             this.toolTip_tips = new System.Windows.Forms.ToolTip(this.components);
             this.label_apperance = new System.Windows.Forms.Label();
             this.panel_sideStrip = new System.Windows.Forms.Panel();
+            this.label_addSingleSong = new System.Windows.Forms.Label();
+            this.label_addFromWeb = new System.Windows.Forms.Label();
             this.trackBar_volume = new System.Windows.Forms.TrackBar();
             this.label_nextSong = new System.Windows.Forms.Label();
             this.label_continue = new System.Windows.Forms.Label();
@@ -68,16 +70,16 @@ namespace IMLoader
             ((System.ComponentModel.ISupportInitialize)(this.musicControllerBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
-            // label1
+            // label_title
             // 
-            this.label1.AutoSize = true;
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(4, 0);
-            this.label1.Name = "label1";
-            this.label1.Padding = new System.Windows.Forms.Padding(0, 1, 0, 0);
-            this.label1.Size = new System.Drawing.Size(61, 20);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "点歌列表";
+            this.label_title.AutoSize = true;
+            this.label_title.ForeColor = System.Drawing.Color.White;
+            this.label_title.Location = new System.Drawing.Point(4, 0);
+            this.label_title.Name = "label_title";
+            this.label_title.Padding = new System.Windows.Forms.Padding(0, 1, 0, 0);
+            this.label_title.Size = new System.Drawing.Size(61, 20);
+            this.label_title.TabIndex = 0;
+            this.label_title.Text = "点歌列表";
             // 
             // button_exit
             // 
@@ -110,7 +112,7 @@ namespace IMLoader
             this.button_settings.Size = new System.Drawing.Size(21, 20);
             this.button_settings.TabIndex = 2;
             this.button_settings.Tag = "设置";
-            this.button_settings.Text = "5";
+            this.button_settings.Text = "@";
             this.button_settings.Click += new System.EventHandler(this.button_settings_Click);
             this.button_settings.MouseEnter += new System.EventHandler(this.button_settings_MouseEnter);
             this.button_settings.MouseLeave += new System.EventHandler(this.button_settings_MouseLeave);
@@ -129,7 +131,6 @@ namespace IMLoader
             this.button_showLyric.TabIndex = 3;
             this.button_showLyric.Tag = "显示歌词";
             this.button_showLyric.Text = ">";
-            this.button_showLyric.Visible = false;
             this.button_showLyric.Click += new System.EventHandler(this.button_showLyric_Click);
             this.button_showLyric.MouseEnter += new System.EventHandler(this.button_showLyric_MouseEnter);
             this.button_showLyric.MouseLeave += new System.EventHandler(this.button_showLyric_MouseLeave);
@@ -148,7 +149,6 @@ namespace IMLoader
             this.button_showCard.TabIndex = 0;
             this.button_showCard.Tag = "显示歌曲卡片";
             this.button_showCard.Text = "1";
-            this.button_showCard.Visible = false;
             this.button_showCard.Click += new System.EventHandler(this.button_showCard_Click);
             this.button_showCard.MouseEnter += new System.EventHandler(this.button_showCard_MouseEnter);
             this.button_showCard.MouseLeave += new System.EventHandler(this.button_showCard_MouseLeave);
@@ -166,13 +166,15 @@ namespace IMLoader
             this.label_apperance.Size = new System.Drawing.Size(21, 20);
             this.label_apperance.TabIndex = 4;
             this.label_apperance.Tag = "外观";
-            this.label_apperance.Text = "a";
+            this.label_apperance.Text = "5";
             this.label_apperance.Click += new System.EventHandler(this.label_apperance_Click);
             this.label_apperance.MouseEnter += new System.EventHandler(this.label_apperance_MouseEnter);
             this.label_apperance.MouseLeave += new System.EventHandler(this.label_apperance_MouseLeave);
             // 
             // panel_sideStrip
             // 
+            this.panel_sideStrip.Controls.Add(this.label_addSingleSong);
+            this.panel_sideStrip.Controls.Add(this.label_addFromWeb);
             this.panel_sideStrip.Controls.Add(this.trackBar_volume);
             this.panel_sideStrip.Controls.Add(this.label_nextSong);
             this.panel_sideStrip.Controls.Add(this.label_continue);
@@ -186,6 +188,41 @@ namespace IMLoader
             this.panel_sideStrip.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Dashboard_MouseDown);
             this.panel_sideStrip.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Dashboard_MouseMove);
             // 
+            // label_addSingleSong
+            // 
+            this.label_addSingleSong.AutoSize = true;
+            this.label_addSingleSong.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.label_addSingleSong.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.label_addSingleSong.Font = new System.Drawing.Font("Webdings", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
+            this.label_addSingleSong.ForeColor = System.Drawing.Color.White;
+            this.label_addSingleSong.Location = new System.Drawing.Point(0, 483);
+            this.label_addSingleSong.Name = "label_addSingleSong";
+            this.label_addSingleSong.Size = new System.Drawing.Size(21, 18);
+            this.label_addSingleSong.TabIndex = 13;
+            this.label_addSingleSong.Tag = "添加单首歌曲";
+            this.label_addSingleSong.Text = "a";
+            this.label_addSingleSong.Click += new System.EventHandler(this.label_addSingleSong_Click);
+            this.label_addSingleSong.MouseEnter += new System.EventHandler(this.label_addSingleSong_MouseEnter);
+            this.label_addSingleSong.MouseLeave += new System.EventHandler(this.label_addSingleSong_MouseLeave);
+            // 
+            // label_addFromWeb
+            // 
+            this.label_addFromWeb.AutoSize = true;
+            this.label_addFromWeb.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.label_addFromWeb.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.label_addFromWeb.Font = new System.Drawing.Font("Webdings", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
+            this.label_addFromWeb.ForeColor = System.Drawing.Color.White;
+            this.label_addFromWeb.Location = new System.Drawing.Point(0, 501);
+            this.label_addFromWeb.Name = "label_addFromWeb";
+            this.label_addFromWeb.Size = new System.Drawing.Size(21, 18);
+            this.label_addFromWeb.TabIndex = 12;
+            this.label_addFromWeb.Tag = "从网络歌单添加歌曲";
+            this.label_addFromWeb.Text = "q";
+            this.label_addFromWeb.Visible = false;
+            this.label_addFromWeb.Click += new System.EventHandler(this.label_addFromWeb_Click);
+            this.label_addFromWeb.MouseEnter += new System.EventHandler(this.label_addFromWeb_MouseEnter);
+            this.label_addFromWeb.MouseLeave += new System.EventHandler(this.label_addFromWeb_MouseLeave);
+            // 
             // trackBar_volume
             // 
             this.trackBar_volume.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -196,7 +233,7 @@ namespace IMLoader
             this.trackBar_volume.Orientation = System.Windows.Forms.Orientation.Vertical;
             this.trackBar_volume.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.trackBar_volume.RightToLeftLayout = true;
-            this.trackBar_volume.Size = new System.Drawing.Size(45, 80);
+            this.trackBar_volume.Size = new System.Drawing.Size(20, 80);
             this.trackBar_volume.TabIndex = 11;
             this.trackBar_volume.Tag = "音量";
             this.trackBar_volume.TickStyle = System.Windows.Forms.TickStyle.None;
@@ -417,7 +454,7 @@ namespace IMLoader
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(400, 671);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.label_title);
             this.Controls.Add(this.panel_sideStrip);
             this.Controls.Add(this.label_apperance);
             this.Controls.Add(this.button_showCard);
@@ -457,7 +494,7 @@ namespace IMLoader
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label_title;
         private System.Windows.Forms.Label button_exit;
         private System.Windows.Forms.Label button_settings;
         private System.Windows.Forms.Label button_showLyric;
@@ -482,6 +519,8 @@ namespace IMLoader
         private System.Windows.Forms.Label label_emptyFinishedList;
         private System.Windows.Forms.Timer timer_refreshData;
         private System.Windows.Forms.Timer timer_refreshSong;
+        private System.Windows.Forms.Label label_addSingleSong;
+        private System.Windows.Forms.Label label_addFromWeb;
     }
 }
 

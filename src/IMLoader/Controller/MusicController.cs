@@ -34,6 +34,15 @@ namespace IMLoader.Controller
                 songFinishedList[0] = song;
             }
         }
+        public static double GetPos()
+        {
+            if(media is null)
+            {
+                return 0d;
+            }
+            return (double)waveOut.GetPosition()/3d/60d/1000d;
+        }
+
         public static void EndSong()
         {
             if (!(media is null))
@@ -57,37 +66,61 @@ namespace IMLoader.Controller
                 else if (waveOut.PlaybackState == PlaybackState.Stopped)//如果歌播放完成：下一首
                 {
                     EndSong();
-                    if (songList.Count > 0)//有预约歌单
+                    try
                     {
-                        media = new MediaFoundationReader(NetController.GetRedirectContent("https://music.163.com/song/media/outer/url?id=" + songList[0].Key));
-                        waveOut = new WaveOutEvent();
-                        waveOut.Init(media);
-                        waveOut.Play();
+                        if (songList.Count > 0)//有预约歌单
+                        {
+                            media = new MediaFoundationReader(NetController.GetRedirectContent("https://music.163.com/song/media/outer/url?id=" + songList[0].Key));
+                            waveOut = new WaveOutEvent();
+                            waveOut.Init(media);
+                            waveOut.Play();
+                        }
+                        else if (SystemConfigurationLoader.systemSettings.card.loop && songFinishedList.Count > 0)//开启循环且循环歌单有内容
+                        {
+                            songList.Add(songFinishedList[0]);
+                            songFinishedList.RemoveAt(0);
+                            if (songList.Count > 0)//有预约歌单
+                            {
+                                media = new MediaFoundationReader(NetController.GetRedirectContent("https://music.163.com/song/media/outer/url?id=" + songList[0].Key));
+                                waveOut = new WaveOutEvent();
+                                waveOut.Init(media);
+                                waveOut.Play();
+                            }
+                        }
                     }
-                    else if (SystemConfigurationLoader.systemSettings.card.loop && songFinishedList.Count > 0)//开启循环且循环歌单有内容
+                    catch(Exception ex)
                     {
-                        songList.Add(songFinishedList[0]);
-                        songFinishedList.RemoveAt(0);
-                        media = new MediaFoundationReader(NetController.GetRedirectContent("https://music.163.com/song/media/outer/url?id=" + songList[0].Key));
-                        waveOut = new WaveOutEvent();
-                        waveOut.Init(media);
-                        waveOut.Play();
+                        if (songList.Count > 0)
+                        {
+                            Console.WriteLine("play failed:" + ex.Message);
+                            waveOut.Stop();
+                            songList.RemoveAt(0);
+                        }
                     }
                 }
             }
             else//还未播放过：未实例化
             {
-                if (songList.Count > 0)
+                try
                 {
-                    media = new MediaFoundationReader(NetController.GetRedirectContent("https://music.163.com/song/media/outer/url?id=" + songList[0].Key));
-                    waveOut = new WaveOutEvent();
-                    waveOut.Init(media);
-                    waveOut.Play();
+                    if (songList.Count > 0)
+                    {
+                        media = new MediaFoundationReader(NetController.GetRedirectContent("https://music.163.com/song/media/outer/url?id=" + songList[0].Key));
+                        waveOut = new WaveOutEvent();
+                        waveOut.Init(media);
+                        waveOut.Play();
+                    }
+                    else if (songFinishedList.Count > 0 && SystemConfigurationLoader.systemSettings.card.loop)
+                    {
+                        songList.Add(songFinishedList[0]);
+                        songFinishedList.RemoveAt(0);
+                    }
                 }
-                else if (songFinishedList.Count > 0 && SystemConfigurationLoader.systemSettings.card.loop)
+                catch(Exception ex)
                 {
-                    songList.Add(songFinishedList[0]);
-                    songFinishedList.RemoveAt(0);
+                    waveOut.Dispose();
+                    media.Dispose();
+                    Console.WriteLine("err occurred:"+ex.Message);
                 }
             }
         }
@@ -107,11 +140,8 @@ namespace IMLoader.Controller
         }
         public static void NextSong()
         {
-            if (!(media is null))
-            {
-                waveOut.Stop();
-                StartSong();
-            }
+            if(!(media is null)) { waveOut.Stop(); }
+            StartSong();
         }
         public static void SetVolume(int v)
         {

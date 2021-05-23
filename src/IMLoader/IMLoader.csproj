@@ -108,6 +108,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddSong.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddSong.Designer.cs">
+      <DependentUpon>AddSong.cs</DependentUpon>
+    </Compile>
     <Compile Include="Card.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -122,6 +128,7 @@
     </Compile>
     <Compile Include="Controller\BaseController.cs" />
     <Compile Include="Controller\DamOperationController.cs" />
+    <Compile Include="Controller\LyricController.cs" />
     <Compile Include="Controller\MusicController.cs" />
     <Compile Include="Controller\NetController.cs" />
     <Compile Include="Controller\NetEaseController.cs" />
@@ -145,10 +152,20 @@
       <DependentUpon>Lyric.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\BiliModel.cs" />
+    <Compile Include="Models\LyricModel.cs" />
     <Compile Include="Models\NetEaseModel.cs" />
     <Compile Include="Models\SystemSettingModel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WebListAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WebListAdd.Designer.cs">
+      <DependentUpon>WebListAdd.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="AddSong.resx">
+      <DependentUpon>AddSong.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Card.resx">
       <DependentUpon>Card.cs</DependentUpon>
     </EmbeddedResource>
@@ -173,6 +190,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="WebListAdd.resx">
+      <DependentUpon>WebListAdd.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

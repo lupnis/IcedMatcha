@@ -12,10 +12,21 @@ namespace IMLoader.Models
     {
         public string name { get; set; }//歌曲名
         public long id { get; set; }//歌曲id
+        public AlbumModel album { get; set; }//专辑数据
+        public List<ArtistModel> artists { get; set; }//作曲者数据
     }
     class NetEaseModel
     {
         public MusicResultModel result { get; set; }//返回结果
         public long code { get; set; }//状态码（判断是否查询成功）
+    }
+    class AlbumModel
+    {
+        public string name { get; set; }//专辑名称
+        public string picUrl { get; set; }//专辑封面
+    }
+    class ArtistModel
+    {
+        public string name { get; set; }//作曲家名
     }
 }
