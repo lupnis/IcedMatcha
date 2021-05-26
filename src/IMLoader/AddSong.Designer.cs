@@ -83,7 +83,8 @@ namespace IMLoader
             this.textBox_song.Location = new System.Drawing.Point(16, 31);
             this.textBox_song.Name = "textBox_song";
             this.textBox_song.Size = new System.Drawing.Size(372, 24);
-            this.textBox_song.TabIndex = 13;
+            this.textBox_song.TabIndex = 0;
+            this.textBox_song.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBox_song_KeyUp);
             // 
             // AddSong
             // 
@@ -107,6 +108,8 @@ namespace IMLoader
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "点歌";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.AddSong_FormClosing);
+            this.Shown += new System.EventHandler(this.AddSong_Shown);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.AddSong_MouseDown);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.AddSong_MouseMove);
             this.ResumeLayout(false);

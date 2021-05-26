@@ -21,7 +21,7 @@ namespace IMLoader.Models
         public string cmd_keyword { get; set; }//点歌关键词
         public int max_order { get; set; }//最多点歌队列数
         public List<KeyValuePair<string,string>> default_songlist { get; set; }//缺省歌单
-
+        public List<long> blockList { get; set; }//屏蔽列表
         public KeyValuePair<int, int> dashboard_pos { get; set; }//控制台启动板卡位置
         public int width { get; set; }//启动板卡宽度
         public int height { get; set; }//启动板卡高度

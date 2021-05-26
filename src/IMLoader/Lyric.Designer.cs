@@ -35,8 +35,8 @@ namespace IMLoader
             this.button_settings = new System.Windows.Forms.Label();
             this.timer_refreshLyric = new System.Windows.Forms.Timer(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label_curr = new System.Windows.Forms.Label();
             this.label_come = new System.Windows.Forms.Label();
+            this.label_curr = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -45,11 +45,11 @@ namespace IMLoader
             this.button_exit.AutoSize = true;
             this.button_exit.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button_exit.Dock = System.Windows.Forms.DockStyle.Right;
-            this.button_exit.Font = new System.Drawing.Font("Webdings", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
+            this.button_exit.Font = new System.Drawing.Font("Webdings", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
             this.button_exit.ForeColor = System.Drawing.Color.White;
-            this.button_exit.Location = new System.Drawing.Point(779, 0);
+            this.button_exit.Location = new System.Drawing.Point(778, 0);
             this.button_exit.Name = "button_exit";
-            this.button_exit.Size = new System.Drawing.Size(21, 18);
+            this.button_exit.Size = new System.Drawing.Size(22, 18);
             this.button_exit.TabIndex = 2;
             this.button_exit.Tag = "退出点歌机";
             this.button_exit.Text = "r";
@@ -60,11 +60,11 @@ namespace IMLoader
             this.button_settings.AutoSize = true;
             this.button_settings.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button_settings.Dock = System.Windows.Forms.DockStyle.Right;
-            this.button_settings.Font = new System.Drawing.Font("Webdings", 9.75F);
+            this.button_settings.Font = new System.Drawing.Font("Webdings", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
             this.button_settings.ForeColor = System.Drawing.Color.White;
-            this.button_settings.Location = new System.Drawing.Point(758, 0);
+            this.button_settings.Location = new System.Drawing.Point(756, 0);
             this.button_settings.Name = "button_settings";
-            this.button_settings.Size = new System.Drawing.Size(21, 18);
+            this.button_settings.Size = new System.Drawing.Size(22, 18);
             this.button_settings.TabIndex = 3;
             this.button_settings.Tag = "设置";
             this.button_settings.Text = "5";
@@ -82,39 +82,39 @@ namespace IMLoader
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Padding = new System.Windows.Forms.Padding(6);
-            this.panel1.Size = new System.Drawing.Size(758, 150);
+            this.panel1.Size = new System.Drawing.Size(756, 150);
             this.panel1.TabIndex = 4;
             this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Lyric_MouseDown);
             this.panel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Lyric_MouseMove);
-            // 
-            // label_curr
-            // 
-            this.label_curr.AutoEllipsis = true;
-            this.label_curr.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label_curr.Font = new System.Drawing.Font("Microsoft YaHei UI", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_curr.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.label_curr.Location = new System.Drawing.Point(6, 6);
-            this.label_curr.Name = "label_curr";
-            this.label_curr.Size = new System.Drawing.Size(746, 48);
-            this.label_curr.TabIndex = 0;
-            this.label_curr.Text = "--------";
-            this.label_curr.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label_curr.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Lyric_MouseDown);
-            this.label_curr.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Lyric_MouseMove);
             // 
             // label_come
             // 
             this.label_come.AutoEllipsis = true;
             this.label_come.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label_come.Font = new System.Drawing.Font("Microsoft YaHei UI", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_come.Font = new System.Drawing.Font("Microsoft YaHei UI", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_come.Location = new System.Drawing.Point(6, 54);
             this.label_come.Name = "label_come";
-            this.label_come.Size = new System.Drawing.Size(746, 48);
+            this.label_come.Size = new System.Drawing.Size(744, 48);
             this.label_come.TabIndex = 1;
             this.label_come.Text = "--------";
             this.label_come.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.label_come.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Lyric_MouseDown);
             this.label_come.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Lyric_MouseMove);
+            // 
+            // label_curr
+            // 
+            this.label_curr.AutoEllipsis = true;
+            this.label_curr.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label_curr.Font = new System.Drawing.Font("Microsoft YaHei UI", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_curr.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.label_curr.Location = new System.Drawing.Point(6, 6);
+            this.label_curr.Name = "label_curr";
+            this.label_curr.Size = new System.Drawing.Size(744, 48);
+            this.label_curr.TabIndex = 0;
+            this.label_curr.Text = "--------";
+            this.label_curr.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label_curr.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Lyric_MouseDown);
+            this.label_curr.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Lyric_MouseMove);
             // 
             // Lyric
             // 

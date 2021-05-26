@@ -19,13 +19,15 @@ namespace IMLoader
         /*variables*/
         public static bool lyricShowed = false,
             songCardShowed = false,
+            addSongShowed = false,
+            bannedListShowed=false,
             loop = false,
-            firstRun=true;
+            firstRun = true;
         private Point mPoint;
 
 
 
-      
+
 
         public Dashboard()
         {
@@ -43,6 +45,7 @@ namespace IMLoader
             toolTip_tips.SetToolTip(label_emptyFinishedList, label_emptyFinishedList.Tag.ToString());
             toolTip_tips.SetToolTip(label_addSingleSong, label_addSingleSong.Tag.ToString());
             toolTip_tips.SetToolTip(label_addFromWeb, label_addFromWeb.Tag.ToString());
+            toolTip_tips.SetToolTip(label_blockList, label_blockList.Tag.ToString());
         }
 
         private void Dashboard_Load(object sender, EventArgs e)
@@ -74,7 +77,15 @@ namespace IMLoader
         }
 
         #region Effects
+        private void label_blockList_MouseEnter(object sender, EventArgs e)
+        {
+            label_blockList.BackColor = Color.GreenYellow;
+        }
 
+        private void label_blockList_MouseLeave(object sender, EventArgs e)
+        {
+            label_blockList.BackColor = Color.Black;
+        }
         private void label_addFromWeb_MouseEnter(object sender, EventArgs e)
         {
             label_addFromWeb.BackColor = Color.DarkGray;
@@ -204,27 +215,37 @@ namespace IMLoader
         }
         private void listBox_songList_DrawItem(object sender, DrawItemEventArgs e)
         {
-            if (e.Index == 0)
+            int index = e.Index;
+            if (index == 0)
             {
                 Graphics g = e.Graphics;
                 Rectangle bound = e.Bounds;
                 string text = listBox_songList.Items[0].ToString();
                 Brush brush = Brushes.DarkGreen;
                 g.FillRectangle(brush, bound);
-
-                TextRenderer.DrawText(g, text, this.listBox_songList.Font, bound, Color.White,
+                TextRenderer.DrawText(g, text, this.listBox_songFinishedList.Font, bound, Color.White,
                                       TextFormatFlags.VerticalCenter | TextFormatFlags.Left);
             }
-            else if (e.Index > 0)
+            if (index > 0)
             {
                 Graphics g = e.Graphics;
                 Rectangle bound = e.Bounds;
-                string text = listBox_songList.Items[e.Index].ToString();
-                Brush brush = Brushes.Black;
-                g.FillRectangle(brush, bound);
-
-                TextRenderer.DrawText(g, text, this.listBox_songList.Font, bound, Color.White,
+                string text = listBox_songList.Items[index].ToString();
+                if ((e.State & DrawItemState.Selected) == DrawItemState.Selected)
+                {
+                    g.DrawRectangle(Pens.White, bound.Left, bound.Top, bound.Width, bound.Height);
+                    Rectangle rect = new Rectangle(bound.Left, bound.Top,
+                                                   bound.Width, bound.Height);
+                    g.FillRectangle(Brushes.Blue, rect);
+                    TextRenderer.DrawText(g, text, this.Font, rect, Color.White,
                                       TextFormatFlags.VerticalCenter | TextFormatFlags.Left);
+                }
+                else
+                {
+                    g.FillRectangle(Brushes.Black, bound);
+                    TextRenderer.DrawText(g, text, this.Font, bound, Color.White,
+                                          TextFormatFlags.VerticalCenter | TextFormatFlags.Left);
+                }
             }
         }
 
@@ -245,10 +266,21 @@ namespace IMLoader
                 Graphics g = e.Graphics;
                 Rectangle bound = e.Bounds;
                 string text = listBox_songFinishedList.Items[e.Index].ToString();
-                Brush brush = Brushes.Black;
-                g.FillRectangle(brush, bound);
-                TextRenderer.DrawText(g, text, this.listBox_songFinishedList.Font, bound, Color.White,
+                if ((e.State & DrawItemState.Selected) == DrawItemState.Selected)
+                {
+                    g.DrawRectangle(Pens.White, bound.Left, bound.Top, bound.Width, bound.Height);
+                    Rectangle rect = new Rectangle(bound.Left, bound.Top,
+                                                   bound.Width, bound.Height);
+                    g.FillRectangle(Brushes.Blue, rect);
+                    TextRenderer.DrawText(g, text, this.Font, rect, Color.White,
                                       TextFormatFlags.VerticalCenter | TextFormatFlags.Left);
+                }
+                else
+                {
+                    g.FillRectangle(Brushes.Black, bound);
+                    TextRenderer.DrawText(g, text, this.Font, bound, Color.White,
+                                          TextFormatFlags.VerticalCenter | TextFormatFlags.Left);
+                }
             }
         }
 
@@ -257,7 +289,7 @@ namespace IMLoader
         #region Tool Strip Buttons
         private void button_exit_Click(object sender, EventArgs e)
         {
-            if(!(Controller.MusicController.media is null))
+            if (!(Controller.MusicController.media is null))
             {
                 if (Controller.MusicController.waveOut.PlaybackState != PlaybackState.Stopped)
                 {
@@ -316,11 +348,10 @@ namespace IMLoader
         {
             Controller.MusicController.PauseSong();
         }
-        
+
         private void label_continue_Click(object sender, EventArgs e)
         {
-            if (firstRun) {
-               Controller.MusicController.StartSong(); firstRun = false; }
+            if (firstRun) { firstRun = false; }
             else { Controller.MusicController.ContinueSong(); }
         }
 
@@ -376,21 +407,61 @@ namespace IMLoader
             }
         }
 
-       
+
 
         private void label_addFromWeb_Click(object sender, EventArgs e)
         {
-
+            
         }
 
         private void label_addSingleSong_Click(object sender, EventArgs e)
         {
-            AddSong addSingleSongFrm = new AddSong();
-            addSingleSongFrm.Show();
+            if (!addSongShowed)
+            {
+                addSongShowed = true;
+                AddSong addSingleSongFrm = new AddSong();
+                addSingleSongFrm.Show();
+            }
         }
 
+        private void listBox_songList_DoubleClick(object sender, EventArgs e)
+        {
 
+            int sel = listBox_songList.SelectedIndex;
+            if (sel >= 0)
+            {
+                if (MessageBox.Show("是否删除：" + listBox_songList.Items[sel].ToString() + "?", "删除确认", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    Controller.MusicController.DelSong(sel);
+                }
+            }
+        }
 
+        private void listBox_songFinishedList_DoubleClick(object sender, EventArgs e)
+        {
+            int sel = listBox_songFinishedList.SelectedIndex;
+            if (sel >= 0)
+            {
+                try
+                {
+                    if (MessageBox.Show("是否删除：" + listBox_songFinishedList.Items[sel].ToString() + "?", "删除确认", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        Controller.MusicController.songFinishedList.RemoveAt(sel);
+                    }
+                }
+                catch { }
+            }
+        }
+
+        private void label_blockList_Click(object sender, EventArgs e)
+        {
+            if (!bannedListShowed)
+            {
+                bannedListShowed = true;
+                BlockList blockListFrm = new BlockList();
+                blockListFrm.Show();
+            }
+        }
         #endregion
 
         #region Timers
@@ -422,10 +493,7 @@ namespace IMLoader
 
         private void timer_refreshSong_Tick(object sender, EventArgs e)
         {
-            if (!firstRun) 
-            {
-                Controller.MusicController.StartSong(); 
-            }
+            if(!firstRun)Controller.MusicController.StartSong();
         }
         #endregion
 

@@ -15,7 +15,7 @@ namespace IMLoader
     public partial class Card : Form
     {
         private Point mPoint;
-
+        public static Models.NetEaseModel musicResponse = new Models.NetEaseModel();
         public Card()
         {
             InitializeComponent();
@@ -116,23 +116,19 @@ namespace IMLoader
                 label_nextSong.Visible = true;
             }
         }
-
+        
         private void timer_refresh_Tick(object sender, EventArgs e)
         {
             if (Controller.MusicController.songList.Count > 0)
             {
-                label_songName.Text = Controller.MusicController.songList[0].Value;
+                if (label_songName.Text != Controller.MusicController.songList[0].Value) label_songName.Text = Controller.MusicController.songList[0].Value;
+                
                 try
                 {
-                    Models.NetEaseModel musicResponse = new Models.NetEaseModel();
-                    musicResponse = JsonSerializer.Deserialize<Models.NetEaseModel>(
-                        Controller.NetController.GetHttpContent("http://music.163.com/api/search/pc/?s=" + 
-                        Controller.MusicController.songList[0].Key+ "&limit=1&type=1")
-                        );
                     if (musicResponse.code == 200)
                     {
-                        this.label_artist.Text= musicResponse.result.songs[0].artists[0].name;
-                        this.pictureBox_album.ImageLocation = musicResponse.result.songs[0].album.picUrl;
+                        if(this.label_artist.Text != musicResponse.result.songs[0].artists[0].name)this.label_artist.Text= musicResponse.result.songs[0].artists[0].name;
+                        if(this.pictureBox_album.ImageLocation != musicResponse.result.songs[0].album.picUrl) this.pictureBox_album.ImageLocation = musicResponse.result.songs[0].album.picUrl;
                     }
                     
                 }

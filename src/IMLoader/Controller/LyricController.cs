@@ -64,27 +64,31 @@ namespace IMLoader.Controller
         }
         public static KeyValuePair<string,string> GetCurrentLyric()
         {
-            double seconds = MusicController.GetPos();
-            if (lyricDic.Count < 1)
+            if (!(Controller.MusicController.media is null))
             {
-                return new KeyValuePair<string, string>("歌曲无歌词或为纯音乐", "");
-            }
-            var list = lyricDic.ToList();
-            if (seconds < list[0].Key)
-            {
-                return new KeyValuePair<string, string>("--------", list[0].Value);
-            }
-            else
-            {
-                for (int i = 1; i < lyricDic.Count; i++)
+                double seconds = MusicController.GetPos();
+                if (lyricDic.Count < 1)
                 {
-                    if (seconds < list[i].Key)
-                    {
-                        return new KeyValuePair<string, string>(list[i - 1].Value, (list.Count > i)? list[i].Value:"");
-                    }
+                    return new KeyValuePair<string, string>("歌曲无歌词或为纯音乐", "");
                 }
-                return new KeyValuePair<string, string>("--------","--------");
+                var list = lyricDic.ToList();
+                if (seconds < list[0].Key)
+                {
+                    return new KeyValuePair<string, string>("--------", list[0].Value);
+                }
+                else
+                {
+                    for (int i = 1; i < lyricDic.Count; i++)
+                    {
+                        if (seconds <= list[i].Key)
+                        {
+                            return new KeyValuePair<string, string>(list[i - 1].Value, (list.Count > i) ? list[i].Value : "");
+                        }
+                    }
+                    return new KeyValuePair<string, string>(list[list.Count - 1].Value, "--------");
+                }
             }
+            else return new KeyValuePair<string, string>("还未开始播放", "");
         }
     }
 

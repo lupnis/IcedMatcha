@@ -39,6 +39,7 @@ namespace IMLoader
             this.toolTip_tips = new System.Windows.Forms.ToolTip(this.components);
             this.label_apperance = new System.Windows.Forms.Label();
             this.panel_sideStrip = new System.Windows.Forms.Panel();
+            this.label_blockList = new System.Windows.Forms.Label();
             this.label_addSingleSong = new System.Windows.Forms.Label();
             this.label_addFromWeb = new System.Windows.Forms.Label();
             this.trackBar_volume = new System.Windows.Forms.TrackBar();
@@ -73,6 +74,7 @@ namespace IMLoader
             // label_title
             // 
             this.label_title.AutoSize = true;
+            this.label_title.Font = new System.Drawing.Font("Microsoft YaHei UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_title.ForeColor = System.Drawing.Color.White;
             this.label_title.Location = new System.Drawing.Point(4, 0);
             this.label_title.Name = "label_title";
@@ -86,12 +88,12 @@ namespace IMLoader
             this.button_exit.AutoSize = true;
             this.button_exit.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button_exit.Dock = System.Windows.Forms.DockStyle.Right;
-            this.button_exit.Font = new System.Drawing.Font("Webdings", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
+            this.button_exit.Font = new System.Drawing.Font("Webdings", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
             this.button_exit.ForeColor = System.Drawing.Color.White;
-            this.button_exit.Location = new System.Drawing.Point(379, 0);
+            this.button_exit.Location = new System.Drawing.Point(378, 0);
             this.button_exit.Name = "button_exit";
             this.button_exit.Padding = new System.Windows.Forms.Padding(0, 0, 0, 2);
-            this.button_exit.Size = new System.Drawing.Size(21, 20);
+            this.button_exit.Size = new System.Drawing.Size(22, 20);
             this.button_exit.TabIndex = 1;
             this.button_exit.Tag = "退出点歌机";
             this.button_exit.Text = "r";
@@ -104,12 +106,12 @@ namespace IMLoader
             this.button_settings.AutoSize = true;
             this.button_settings.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button_settings.Dock = System.Windows.Forms.DockStyle.Right;
-            this.button_settings.Font = new System.Drawing.Font("Webdings", 9.75F);
+            this.button_settings.Font = new System.Drawing.Font("Webdings", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
             this.button_settings.ForeColor = System.Drawing.Color.White;
-            this.button_settings.Location = new System.Drawing.Point(358, 0);
+            this.button_settings.Location = new System.Drawing.Point(356, 0);
             this.button_settings.Name = "button_settings";
             this.button_settings.Padding = new System.Windows.Forms.Padding(0, 0, 0, 2);
-            this.button_settings.Size = new System.Drawing.Size(21, 20);
+            this.button_settings.Size = new System.Drawing.Size(22, 20);
             this.button_settings.TabIndex = 2;
             this.button_settings.Tag = "设置";
             this.button_settings.Text = "@";
@@ -122,12 +124,12 @@ namespace IMLoader
             this.button_showLyric.AutoSize = true;
             this.button_showLyric.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button_showLyric.Dock = System.Windows.Forms.DockStyle.Right;
-            this.button_showLyric.Font = new System.Drawing.Font("Webdings", 9.75F);
+            this.button_showLyric.Font = new System.Drawing.Font("Webdings", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
             this.button_showLyric.ForeColor = System.Drawing.Color.White;
-            this.button_showLyric.Location = new System.Drawing.Point(337, 0);
+            this.button_showLyric.Location = new System.Drawing.Point(334, 0);
             this.button_showLyric.Name = "button_showLyric";
             this.button_showLyric.Padding = new System.Windows.Forms.Padding(0, 0, 0, 2);
-            this.button_showLyric.Size = new System.Drawing.Size(21, 20);
+            this.button_showLyric.Size = new System.Drawing.Size(22, 20);
             this.button_showLyric.TabIndex = 3;
             this.button_showLyric.Tag = "显示歌词";
             this.button_showLyric.Text = ">";
@@ -140,12 +142,12 @@ namespace IMLoader
             this.button_showCard.AutoSize = true;
             this.button_showCard.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button_showCard.Dock = System.Windows.Forms.DockStyle.Right;
-            this.button_showCard.Font = new System.Drawing.Font("Webdings", 9.75F);
+            this.button_showCard.Font = new System.Drawing.Font("Webdings", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
             this.button_showCard.ForeColor = System.Drawing.Color.White;
-            this.button_showCard.Location = new System.Drawing.Point(316, 0);
+            this.button_showCard.Location = new System.Drawing.Point(312, 0);
             this.button_showCard.Name = "button_showCard";
             this.button_showCard.Padding = new System.Windows.Forms.Padding(0, 0, 0, 2);
-            this.button_showCard.Size = new System.Drawing.Size(21, 20);
+            this.button_showCard.Size = new System.Drawing.Size(22, 20);
             this.button_showCard.TabIndex = 0;
             this.button_showCard.Tag = "显示歌曲卡片";
             this.button_showCard.Text = "1";
@@ -158,12 +160,12 @@ namespace IMLoader
             this.label_apperance.AutoSize = true;
             this.label_apperance.Cursor = System.Windows.Forms.Cursors.Hand;
             this.label_apperance.Dock = System.Windows.Forms.DockStyle.Right;
-            this.label_apperance.Font = new System.Drawing.Font("Webdings", 9.75F);
+            this.label_apperance.Font = new System.Drawing.Font("Webdings", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
             this.label_apperance.ForeColor = System.Drawing.Color.White;
-            this.label_apperance.Location = new System.Drawing.Point(295, 0);
+            this.label_apperance.Location = new System.Drawing.Point(290, 0);
             this.label_apperance.Name = "label_apperance";
             this.label_apperance.Padding = new System.Windows.Forms.Padding(0, 0, 0, 2);
-            this.label_apperance.Size = new System.Drawing.Size(21, 20);
+            this.label_apperance.Size = new System.Drawing.Size(22, 20);
             this.label_apperance.TabIndex = 4;
             this.label_apperance.Tag = "外观";
             this.label_apperance.Text = "5";
@@ -173,6 +175,7 @@ namespace IMLoader
             // 
             // panel_sideStrip
             // 
+            this.panel_sideStrip.Controls.Add(this.label_blockList);
             this.panel_sideStrip.Controls.Add(this.label_addSingleSong);
             this.panel_sideStrip.Controls.Add(this.label_addFromWeb);
             this.panel_sideStrip.Controls.Add(this.trackBar_volume);
@@ -188,16 +191,34 @@ namespace IMLoader
             this.panel_sideStrip.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Dashboard_MouseDown);
             this.panel_sideStrip.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Dashboard_MouseMove);
             // 
+            // label_blockList
+            // 
+            this.label_blockList.AutoSize = true;
+            this.label_blockList.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.label_blockList.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.label_blockList.Font = new System.Drawing.Font("Webdings", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
+            this.label_blockList.ForeColor = System.Drawing.Color.White;
+            this.label_blockList.Location = new System.Drawing.Point(0, 465);
+            this.label_blockList.Name = "label_blockList";
+            this.label_blockList.Size = new System.Drawing.Size(22, 18);
+            this.label_blockList.TabIndex = 14;
+            this.label_blockList.Tag = "屏蔽列表";
+            this.label_blockList.Text = "y";
+            this.label_blockList.Visible = false;
+            this.label_blockList.Click += new System.EventHandler(this.label_blockList_Click);
+            this.label_blockList.MouseEnter += new System.EventHandler(this.label_blockList_MouseEnter);
+            this.label_blockList.MouseLeave += new System.EventHandler(this.label_blockList_MouseLeave);
+            // 
             // label_addSingleSong
             // 
             this.label_addSingleSong.AutoSize = true;
             this.label_addSingleSong.Cursor = System.Windows.Forms.Cursors.Hand;
             this.label_addSingleSong.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.label_addSingleSong.Font = new System.Drawing.Font("Webdings", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
+            this.label_addSingleSong.Font = new System.Drawing.Font("Webdings", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
             this.label_addSingleSong.ForeColor = System.Drawing.Color.White;
             this.label_addSingleSong.Location = new System.Drawing.Point(0, 483);
             this.label_addSingleSong.Name = "label_addSingleSong";
-            this.label_addSingleSong.Size = new System.Drawing.Size(21, 18);
+            this.label_addSingleSong.Size = new System.Drawing.Size(22, 18);
             this.label_addSingleSong.TabIndex = 13;
             this.label_addSingleSong.Tag = "添加单首歌曲";
             this.label_addSingleSong.Text = "a";
@@ -210,11 +231,11 @@ namespace IMLoader
             this.label_addFromWeb.AutoSize = true;
             this.label_addFromWeb.Cursor = System.Windows.Forms.Cursors.Hand;
             this.label_addFromWeb.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.label_addFromWeb.Font = new System.Drawing.Font("Webdings", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
+            this.label_addFromWeb.Font = new System.Drawing.Font("Webdings", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
             this.label_addFromWeb.ForeColor = System.Drawing.Color.White;
             this.label_addFromWeb.Location = new System.Drawing.Point(0, 501);
             this.label_addFromWeb.Name = "label_addFromWeb";
-            this.label_addFromWeb.Size = new System.Drawing.Size(21, 18);
+            this.label_addFromWeb.Size = new System.Drawing.Size(22, 18);
             this.label_addFromWeb.TabIndex = 12;
             this.label_addFromWeb.Tag = "从网络歌单添加歌曲";
             this.label_addFromWeb.Text = "q";
@@ -245,11 +266,11 @@ namespace IMLoader
             this.label_nextSong.AutoSize = true;
             this.label_nextSong.Cursor = System.Windows.Forms.Cursors.Hand;
             this.label_nextSong.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.label_nextSong.Font = new System.Drawing.Font("Webdings", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
+            this.label_nextSong.Font = new System.Drawing.Font("Webdings", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
             this.label_nextSong.ForeColor = System.Drawing.Color.White;
             this.label_nextSong.Location = new System.Drawing.Point(0, 599);
             this.label_nextSong.Name = "label_nextSong";
-            this.label_nextSong.Size = new System.Drawing.Size(21, 18);
+            this.label_nextSong.Size = new System.Drawing.Size(22, 18);
             this.label_nextSong.TabIndex = 10;
             this.label_nextSong.Tag = "下一首";
             this.label_nextSong.Text = "8";
@@ -262,11 +283,11 @@ namespace IMLoader
             this.label_continue.AutoSize = true;
             this.label_continue.Cursor = System.Windows.Forms.Cursors.Hand;
             this.label_continue.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.label_continue.Font = new System.Drawing.Font("Webdings", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
+            this.label_continue.Font = new System.Drawing.Font("Webdings", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
             this.label_continue.ForeColor = System.Drawing.Color.White;
             this.label_continue.Location = new System.Drawing.Point(0, 617);
             this.label_continue.Name = "label_continue";
-            this.label_continue.Size = new System.Drawing.Size(21, 18);
+            this.label_continue.Size = new System.Drawing.Size(22, 18);
             this.label_continue.TabIndex = 9;
             this.label_continue.Tag = "继续";
             this.label_continue.Text = "4";
@@ -279,11 +300,11 @@ namespace IMLoader
             this.label_pause.AutoSize = true;
             this.label_pause.Cursor = System.Windows.Forms.Cursors.Hand;
             this.label_pause.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.label_pause.Font = new System.Drawing.Font("Webdings", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
+            this.label_pause.Font = new System.Drawing.Font("Webdings", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
             this.label_pause.ForeColor = System.Drawing.Color.White;
             this.label_pause.Location = new System.Drawing.Point(0, 635);
             this.label_pause.Name = "label_pause";
-            this.label_pause.Size = new System.Drawing.Size(21, 18);
+            this.label_pause.Size = new System.Drawing.Size(22, 18);
             this.label_pause.TabIndex = 8;
             this.label_pause.Tag = "暂停";
             this.label_pause.Text = ";";
@@ -296,11 +317,11 @@ namespace IMLoader
             this.label_loop.AutoSize = true;
             this.label_loop.Cursor = System.Windows.Forms.Cursors.Hand;
             this.label_loop.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.label_loop.Font = new System.Drawing.Font("Webdings", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
+            this.label_loop.Font = new System.Drawing.Font("Webdings", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
             this.label_loop.ForeColor = System.Drawing.Color.White;
             this.label_loop.Location = new System.Drawing.Point(0, 653);
             this.label_loop.Name = "label_loop";
-            this.label_loop.Size = new System.Drawing.Size(21, 18);
+            this.label_loop.Size = new System.Drawing.Size(22, 18);
             this.label_loop.TabIndex = 7;
             this.label_loop.Tag = "列表循环";
             this.label_loop.Text = "`";
@@ -357,12 +378,12 @@ namespace IMLoader
             this.label_emptySongList.AutoSize = true;
             this.label_emptySongList.Cursor = System.Windows.Forms.Cursors.Hand;
             this.label_emptySongList.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.label_emptySongList.Font = new System.Drawing.Font("Webdings", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
+            this.label_emptySongList.Font = new System.Drawing.Font("Webdings", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
             this.label_emptySongList.ForeColor = System.Drawing.Color.White;
             this.label_emptySongList.Location = new System.Drawing.Point(0, 287);
             this.label_emptySongList.Name = "label_emptySongList";
             this.label_emptySongList.Padding = new System.Windows.Forms.Padding(0, 0, 0, 2);
-            this.label_emptySongList.Size = new System.Drawing.Size(21, 20);
+            this.label_emptySongList.Size = new System.Drawing.Size(22, 20);
             this.label_emptySongList.TabIndex = 2;
             this.label_emptySongList.Tag = "清空";
             this.label_emptySongList.Text = "<";
@@ -376,15 +397,16 @@ namespace IMLoader
             this.listBox_songList.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.listBox_songList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listBox_songList.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            this.listBox_songList.Font = new System.Drawing.Font("Microsoft YaHei UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listBox_songList.ForeColor = System.Drawing.Color.White;
             this.listBox_songList.FormattingEnabled = true;
-            this.listBox_songList.ItemHeight = 20;
+            this.listBox_songList.ItemHeight = 19;
             this.listBox_songList.Location = new System.Drawing.Point(0, 0);
             this.listBox_songList.Name = "listBox_songList";
-            this.listBox_songList.SelectionMode = System.Windows.Forms.SelectionMode.None;
             this.listBox_songList.Size = new System.Drawing.Size(374, 307);
             this.listBox_songList.TabIndex = 0;
             this.listBox_songList.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_songList_DrawItem);
+            this.listBox_songList.DoubleClick += new System.EventHandler(this.listBox_songList_DoubleClick);
             // 
             // panel2
             // 
@@ -400,12 +422,12 @@ namespace IMLoader
             this.label_emptyFinishedList.AutoSize = true;
             this.label_emptyFinishedList.Cursor = System.Windows.Forms.Cursors.Hand;
             this.label_emptyFinishedList.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.label_emptyFinishedList.Font = new System.Drawing.Font("Webdings", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
+            this.label_emptyFinishedList.Font = new System.Drawing.Font("Webdings", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
             this.label_emptyFinishedList.ForeColor = System.Drawing.Color.White;
             this.label_emptyFinishedList.Location = new System.Drawing.Point(0, 312);
             this.label_emptyFinishedList.Name = "label_emptyFinishedList";
             this.label_emptyFinishedList.Padding = new System.Windows.Forms.Padding(0, 0, 0, 2);
-            this.label_emptyFinishedList.Size = new System.Drawing.Size(21, 20);
+            this.label_emptyFinishedList.Size = new System.Drawing.Size(22, 20);
             this.label_emptyFinishedList.TabIndex = 2;
             this.label_emptyFinishedList.Tag = "清空";
             this.label_emptyFinishedList.Text = "<";
@@ -419,15 +441,16 @@ namespace IMLoader
             this.listBox_songFinishedList.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.listBox_songFinishedList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listBox_songFinishedList.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            this.listBox_songFinishedList.Font = new System.Drawing.Font("Microsoft YaHei UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listBox_songFinishedList.ForeColor = System.Drawing.Color.White;
             this.listBox_songFinishedList.FormattingEnabled = true;
             this.listBox_songFinishedList.ItemHeight = 20;
             this.listBox_songFinishedList.Location = new System.Drawing.Point(0, 0);
             this.listBox_songFinishedList.Name = "listBox_songFinishedList";
-            this.listBox_songFinishedList.SelectionMode = System.Windows.Forms.SelectionMode.None;
             this.listBox_songFinishedList.Size = new System.Drawing.Size(374, 332);
             this.listBox_songFinishedList.TabIndex = 1;
             this.listBox_songFinishedList.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_songFinishedList_DrawItem);
+            this.listBox_songFinishedList.DoubleClick += new System.EventHandler(this.listBox_songFinishedList_DoubleClick);
             // 
             // timer_refreshList
             // 
@@ -521,6 +544,7 @@ namespace IMLoader
         private System.Windows.Forms.Timer timer_refreshSong;
         private System.Windows.Forms.Label label_addSingleSong;
         private System.Windows.Forms.Label label_addFromWeb;
+        private System.Windows.Forms.Label label_blockList;
     }
 }
 

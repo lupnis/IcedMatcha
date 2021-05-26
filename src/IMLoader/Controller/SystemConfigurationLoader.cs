@@ -13,7 +13,14 @@ namespace IMLoader.Controller
         {
             if (File.Exists("system.json"))
             {
-                systemSettings = JsonSerializer.Deserialize<SystemSettingsModel>(File.ReadAllText("system.json"));
+                try
+                {
+                    systemSettings = JsonSerializer.Deserialize<SystemSettingsModel>(File.ReadAllText("system.json"));
+                }
+                catch
+                {
+                    RestoreConfig();
+                }
             }
             else
             {
@@ -22,7 +29,7 @@ namespace IMLoader.Controller
         }
         public static void RestoreConfig()
         {
-            systemSettings.version = "2.5.2.8";
+            systemSettings.version = "2.6.2.8";
             LiveSettingsModel live = new LiveSettingsModel();
             live.room_id = "8253461";
             live.time_delta = 10;

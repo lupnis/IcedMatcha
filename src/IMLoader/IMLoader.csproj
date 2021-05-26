@@ -114,6 +114,12 @@
     <Compile Include="AddSong.Designer.cs">
       <DependentUpon>AddSong.cs</DependentUpon>
     </Compile>
+    <Compile Include="BlockList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BlockList.Designer.cs">
+      <DependentUpon>BlockList.cs</DependentUpon>
+    </Compile>
     <Compile Include="Card.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -166,6 +172,9 @@
     <EmbeddedResource Include="AddSong.resx">
       <DependentUpon>AddSong.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="BlockList.resx">
+      <DependentUpon>BlockList.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Card.resx">
       <DependentUpon>Card.cs</DependentUpon>
     </EmbeddedResource>
@@ -189,6 +198,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="WebListAdd.resx">
       <DependentUpon>WebListAdd.cs</DependentUpon>
@@ -209,6 +219,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="IM.ico" />
+    <None Include="Resources\empty.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

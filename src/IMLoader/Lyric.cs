@@ -16,7 +16,6 @@ namespace IMLoader
         public Lyric()
         {
             InitializeComponent();
-
         }
 
         private void Lyric_FormClosing(object sender, FormClosingEventArgs e)
@@ -51,6 +50,7 @@ namespace IMLoader
             this.Width = Controller.SystemConfigurationLoader.systemSettings.lyric.width;
             this.Height = Controller.SystemConfigurationLoader.systemSettings.lyric.height;
             label_curr.Height = label_come.Height = (this.Height-12) / 2;
+            label_curr.Font = label_come.Font = new Font("Microsoft YaHei UI", 0.55f*(this.Height - 4) / 2,FontStyle.Bold);
             timer_refreshLyric.Start();
         }
 
@@ -62,16 +62,11 @@ namespace IMLoader
             Controller.SystemConfigurationLoader.systemSettings.lyric.width = this.Width;
             Controller.SystemConfigurationLoader.systemSettings.lyric.height = this.Height;
             label_curr.Height = label_come.Height = (this.Height - 12) / 2;
-        }
-
-        private void button_add_Click(object sender, EventArgs e)
-        {
-            Controller.LyricController.LoadLyric();
+            label_curr.Font = label_come.Font = new Font("Microsoft YaHei UI", 0.55f * (this.Height - 4) / 2,FontStyle.Bold);
         }
 
         private void timer_refreshLyric_Tick(object sender, EventArgs e)
         {
-            Controller.LyricController.LoadLyric();
             KeyValuePair<string,string> cur=Controller.LyricController.GetCurrentLyric();
             label_curr.Text = cur.Key;
             label_come.Text = cur.Value;

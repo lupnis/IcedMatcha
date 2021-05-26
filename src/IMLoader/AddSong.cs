@@ -33,15 +33,40 @@ namespace IMLoader
 
         private void button_add_Click(object sender, EventArgs e)
         {
-            Controller.MusicController.AddSong(Controller.NetEaseController.TransformSong(textBox_song.Text));
-            MessageBox.Show("点歌成功！嗷嗷~", "成功", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            textBox_song.Text = "";
+            if (textBox_song.Text != "")
+            {
+                Controller.MusicController.AddSong(Controller.NetEaseController.TransformSong(textBox_song.Text));
+                MessageBox.Show("点歌成功！嗷嗷~", "成功", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                textBox_song.Text = "";
+                textBox_song.Focus();
+            }
         }
 
         private void button_cancel_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.Cancel;
             this.Close();
+        }
+
+        private void AddSong_Shown(object sender, EventArgs e)
+        {
+            this.textBox_song.Focus();
+        }
+
+        private void textBox_song_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter&& textBox_song.Text != "")
+            {
+                Controller.MusicController.AddSong(Controller.NetEaseController.TransformSong(textBox_song.Text));
+                MessageBox.Show("点歌成功！嗷嗷~", "成功", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                textBox_song.Text = "";
+                textBox_song.Focus();
+            }
+        }
+
+        private void AddSong_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Dashboard.addSongShowed = false;
         }
     }
 }

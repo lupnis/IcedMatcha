@@ -54,6 +54,9 @@ namespace IMLoader
             // 
             this.pictureBox_album.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.pictureBox_album.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pictureBox_album.ErrorImage = global::IMLoader.Properties.Resources.empty;
+            this.pictureBox_album.Image = global::IMLoader.Properties.Resources.empty;
+            this.pictureBox_album.InitialImage = global::IMLoader.Properties.Resources.empty;
             this.pictureBox_album.Location = new System.Drawing.Point(0, 0);
             this.pictureBox_album.Name = "pictureBox_album";
             this.pictureBox_album.Size = new System.Drawing.Size(80, 80);
@@ -87,7 +90,7 @@ namespace IMLoader
             this.label_nextSong.BackColor = System.Drawing.Color.Transparent;
             this.label_nextSong.Dock = System.Windows.Forms.DockStyle.Top;
             this.label_nextSong.Font = new System.Drawing.Font("Microsoft YaHei UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_nextSong.Location = new System.Drawing.Point(6, 54);
+            this.label_nextSong.Location = new System.Drawing.Point(6, 55);
             this.label_nextSong.Name = "label_nextSong";
             this.label_nextSong.Padding = new System.Windows.Forms.Padding(0, 0, 4, 0);
             this.label_nextSong.Size = new System.Drawing.Size(65, 19);
@@ -101,7 +104,7 @@ namespace IMLoader
             this.label_artist.BackColor = System.Drawing.Color.Transparent;
             this.label_artist.Dock = System.Windows.Forms.DockStyle.Top;
             this.label_artist.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_artist.Location = new System.Drawing.Point(6, 31);
+            this.label_artist.Location = new System.Drawing.Point(6, 32);
             this.label_artist.Name = "label_artist";
             this.label_artist.Padding = new System.Windows.Forms.Padding(0, 0, 4, 2);
             this.label_artist.Size = new System.Drawing.Size(94, 23);
@@ -114,11 +117,11 @@ namespace IMLoader
             this.label_songName.AutoSize = true;
             this.label_songName.BackColor = System.Drawing.Color.Transparent;
             this.label_songName.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label_songName.Font = new System.Drawing.Font("Microsoft YaHei UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_songName.Font = new System.Drawing.Font("Microsoft YaHei UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_songName.Location = new System.Drawing.Point(6, 6);
             this.label_songName.Name = "label_songName";
             this.label_songName.Padding = new System.Windows.Forms.Padding(0, 0, 4, 0);
-            this.label_songName.Size = new System.Drawing.Size(111, 25);
+            this.label_songName.Size = new System.Drawing.Size(111, 26);
             this.label_songName.TabIndex = 0;
             this.label_songName.Text = "无歌曲信息";
             // 
