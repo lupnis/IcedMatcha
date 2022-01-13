@@ -31,7 +31,7 @@ namespace IMLoader.Controller
         {
             systemSettings.version = "2.6.2.8";
             LiveSettingsModel live = new LiveSettingsModel();
-            live.room_id = "8253461";
+            live.room_id = "-1";
             live.time_delta = 10;
             live.cmd_keyword = "点歌";
             live.max_order = 100;
