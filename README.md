@@ -1,4 +1,3 @@
-<table><tr><td bgcolor=green><font color=white ><strong>IcedMatcha 3 (正式版) 即将推出，版本大更新</strong></font></td></tr></table>
 # 这是点歌机的帮助文档哦
 **IcedMatcha**
 **哔哩哔哩直播间小助手**
