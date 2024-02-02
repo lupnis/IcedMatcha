@@ -1,4 +1,4 @@
-# 这是点歌机的帮助文档哦
+# <font color=red>aborted 😢</font>
 **IcedMatcha**
 **哔哩哔哩直播间小助手**
 ## 版本 2.1.2.1
